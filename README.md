@@ -8,6 +8,6 @@ A plastic case is also designed and can be printed by 3d printers.
 The arduino code use the multiCameraControl Libary by Sebastian Setz
 	Project....:  http://sebastian.setz.name/arduino/my-libraries/multi-Camera-IR-Control
 	Contact....:  http://Sebastian.Setz.name
-Theoretically, all camera model include in multiCameraControl Libary (i.e. canon, nikon, olympus, minolta, sony, pentax,) should also be supported by this project by making slight modifications in the Arduino code. 
+Theoretically, all camera model include in multiCameraControl Libary (i.e. canon, nikon, olympus, minolta, sony, pentax,) should also be supported by this project with making slight modifications in the Arduino code. 
 However, no test has been done except on the Sony Nex 5N Camera.
 

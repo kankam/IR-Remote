@@ -1,5 +1,6 @@
 # IR-Remote
 This project is to build an IR Remote for Sony Nex 5N Camera. 
+
 AN Arduino Pro Mini is used as the Control Unit.
 A PCB is designed to mount all the components together.
 A plastic case is also designed and can be printed by 3d printers.

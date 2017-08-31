@@ -126,12 +126,12 @@ int digit = 0; //reset digit display
   }
   else if (digitalRead(START) == HIGH){ 
     //shutter bulb mode
-      while(digit>0){
-        //buffer time for camera to load
+	
         //counter should be set to shutter - 1 if shutter time on camera is pre-set
-        displayDigit(shot,3000); //Display shot count, buffer time is set to 3s
-        }
+		
+      displayDigit(shot,3000); //Display shot count, buffer time is set to 3s
       Nex.shutterNow();//Open shutter when blub mode is chosen on camera / Take a photo
+	  
       digit = counter;
          while(digit>0){
           displayDigit(digit,1000);

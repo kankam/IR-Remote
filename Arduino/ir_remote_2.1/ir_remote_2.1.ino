@@ -91,64 +91,55 @@ void displayDigit(int digit, int t){
         }
         digitalWrite(segPin[b],LOW);
       DisplaySingleDigit(InDigit[b]);
-        delay(5); //Display Frequency ~50Hz
+        delay(5); //Refresh Frequency ~50Hz
       }
     }
   } 
 
 void loop() {
 int digit = 0; //reset digit display
-switch (digitalRead(START)){
-  case LOW : //for setting up the counter
-    displayDigit(counter,5);
-    if (digitalRead(UP) == LOW){
-      counter++;
-      displayDigit(counter,rate);
-      if(rate>=5){
-        //increase rate when long press
-        rate = rate-5;
-      }
-      }
-    else if (digitalRead(DOWN) == LOW){
-      counter--;
-      //delay(50);
-      displayDigit(counter,rate);
-      if(rate>=5){
-        //increase rate when long press
-        rate = rate-5;
-      }
-    }
-    else {
-      //reset when no button press
-      rate=200;
-      shot = 0;
-      }
-
-  break;
-  case HIGH : //shutter bulb mode
-    while(digit>0){
-      //buffer time for camera to load
-      //counter should be set to shutter - 1 if shutter time on camera is pre-set
-      displayDigit(shot,3000); //Display shot count, buffer time is set to 3s
-      }
-    Nex.shutterNow();//Open shutter when blub mode is chosen on camera / Take a photo
-    digit = counter;
-       while(digit>0){
-        displayDigit(digit,1000);
-        digit--;
+  if(digitalRead(START) == LOW){
+  //for setting up the counter
+      displayDigit(counter,5);
+      if (digitalRead(UP) == LOW){
+        counter++;
+        displayDigit(counter,rate);
+        if(rate>=5){
+          //increase rate when long press
+          rate = rate-5;
         }
-     Nex.shutterNow();//Close shutter when blub mode is chosen on camera / Do nothing
-     shot++;
+        }
+      else if (digitalRead(DOWN) == LOW){
+        counter--;
+        displayDigit(counter,rate);
+        if(rate>=5){
+          //increase rate when long press
+          rate = rate-5;
+        }
+      }
+      else {
+        //reset when no button press
+        rate=200;
+        shot = 0;
+        }
 
-  break;
-  
-  default : //indicate fault
-  turnOff();
-  for (int z=0; z<500; z++){
-    digitalWrite(13,HIGH);
-    delay(100);
-    digitalWrite(13,LOW);
-    delay(100);
-    }
-}
-}
+  }
+  else if (digitalRead(START) == HIGH){ 
+    //shutter bulb mode
+      while(digit>0){
+        //buffer time for camera to load
+        //counter should be set to shutter - 1 if shutter time on camera is pre-set
+        displayDigit(shot,3000); //Display shot count, buffer time is set to 3s
+        }
+      Nex.shutterNow();//Open shutter when blub mode is chosen on camera / Take a photo
+      digit = counter;
+         while(digit>0){
+          displayDigit(digit,1000);
+          digit--;
+          }
+       Nex.shutterNow();//Close shutter when blub mode is chosen on camera / Do nothing
+       shot++;
+
+  }
+ }
+

@@ -102,7 +102,9 @@ int digit = 0; //reset digit display
   //for setting up the counter
       displayDigit(counter,5);
       if (digitalRead(UP) == LOW){
-        counter++;
+        if(counter < 9999{
+	      counter++;
+      }
         displayDigit(counter,rate);
         if(rate>=5){
           //increase rate when long press
@@ -110,7 +112,9 @@ int digit = 0; //reset digit display
         }
         }
       else if (digitalRead(DOWN) == LOW){
-        counter--;
+       if(counter > 0){
+	       counter--;
+       }
         displayDigit(counter,rate);
         if(rate>=5){
           //increase rate when long press

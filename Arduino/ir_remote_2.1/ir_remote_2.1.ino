@@ -102,7 +102,7 @@ int digit = 0; //reset digit display
   //for setting up the counter
       displayDigit(counter,5);
       if (digitalRead(UP) == LOW){
-        if(counter < 9999{
+        if(counter < 9999){
 	      counter++;
       }
         displayDigit(counter,rate);
